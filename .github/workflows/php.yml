@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: composer update
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -41,9 +44,6 @@ jobs:
         key: ${{ secrets.DEPLOY_SSH_KEY }}
         source: "./*"
         target: "/home/votre-utilisateur/dev"
-        
-    - name: Install dependencies
-      run: composer install
       
     - name: Update Schema Database
       run: php bin/console d:s:u --force
