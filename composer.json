@@ -1,4 +1,6 @@
 {
+    "name": "tentatives/modula",
+    "description": "modula_test",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
