@@ -43,7 +43,7 @@ jobs:
         username: "tentatives"
         key: ${{ secrets.DEPLOY_SSH_KEY }}
         source: "./*"
-        target: "/home/votre-utilisateur/dev"
+        target: "/home/tentatives/dev"
       
     - name: Update Schema Database
       run: php bin/console d:s:u --force
