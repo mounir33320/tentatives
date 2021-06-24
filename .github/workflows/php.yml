@@ -39,7 +39,7 @@ jobs:
     - name: Deploy
       uses: appleboy/scp-action@master
       with:
-        host: vps-f9de4d18.vps.ovh.net
+        host: modula.syllab.com
         username: "tentatives"
         key: ${{ secrets.DEPLOY_SSH_KEY }}
         source: "./*"
