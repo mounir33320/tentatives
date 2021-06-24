@@ -48,20 +48,12 @@ jobs:
     - name: Install dependencies
       run: composer install
 
-    - name: Update schema database
-      # You may pin to the exact commit or the version.
-      # uses: cross-the-world/ssh-scp-ssh-pipelines@78e864b4890087a58248ff39320406971ca88b89
-      uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+    - name: Schema Database update
+      uses: appleboy/ssh-action@master
       with:
-        # ssh remote host
         host: vps-f9de4d18.vps.ovh.net
-        # ssh remote port
-        port: 22
-        # ssh remote user
-        user: tentatives
-        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+        username: tentatives
         key: ${{ secrets.DEPLOY_SSH_KEY }}
-
-        # scp from local to remote
-        scp: php bin/console d:s:u --force
+        port: 22
+        script: php /home/tentatives/dev/bin/console d:s:u --force
 
