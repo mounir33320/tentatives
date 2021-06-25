@@ -54,16 +54,13 @@ jobs:
           username: "tentatives"
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           source: "./*"
-          target: "/home/tentatives/dev"
+          target: "/home/tentatives/test"
 
-#      - name: Install dependencies
-#        run: composer install
-
-      - name: Update schema database
+      - name: Update schema database & install dependencies
         uses: appleboy/ssh-action@master
         with:
           host: vps-f9de4d18.vps.ovh.net
           username: tentatives
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          script: cd /home/tentatives/dev && composer install && php /home/tentatives/dev/bin/console d:s:u --force
+          script: cd /home/tentatives/test && composer install && php bin/console d:s:u --force
