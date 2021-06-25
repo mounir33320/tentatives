@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: composer install
-
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
@@ -46,6 +43,9 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: tentative-app
+
+      - name: Install dependencies
+        run: composer install
 
       - name: Deploy
         uses: appleboy/scp-action@master
