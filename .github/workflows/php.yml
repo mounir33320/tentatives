@@ -47,4 +47,5 @@ jobs:
           username: tentatives
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          script: php /home/tentatives/dev/bin/console d:s:u --force
+          script: php /home/tentatives/dev/bin/console d:s:u --force && php /home/tentatives/dev/bin/console d:f:l
+
