@@ -60,5 +60,5 @@ jobs:
           username: tentatives
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          script: cd /home/tentatives/test && composer install && php bin/console d:s:u --force
+          script: cd /home/tentatives/dev && composer install && php bin/console d:s:u --force
 
