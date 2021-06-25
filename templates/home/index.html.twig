@@ -3,4 +3,67 @@
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes("success") %}
+        <div id="alert-message" class="alert alert-success text-center mt-3">{{ message }}</div>
+    {% endfor %}
+    <div id="modal-depose-annonce" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Répondre à l'annonce</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ include('parts/_form_annonce.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-primary mb-3">
+        <div class="card-body">
+            <h4 class="card-title text-center">Louer des amis rapidement grâce à Tentatives</h4>
+            <img class="img-fluid rounded mx-auto d-block" style="height: 500px"
+                 src="https://images.pexels.com/photos/2026764/pexels-photo-2026764.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                 alt="">
+        </div>
+    </div>
+
+    <div class="text-center mb-3">
+        <button class="btn btn-lg btn-light" type="button" data-bs-toggle="modal" data-bs-target="#modal-depose-annonce">Déposer votre annonce ici</button>
+    </div>
+
+
+    <div class="row">
+        {% for annonce in annonces %}
+            <div class="col-sm">
+                <div class="{% if loop.index is odd %} card text-white bg-secondary mb-3 {% else %} card bg-light mb-3 {% endif %}"
+                     style="max-width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ annonce.titre }}</h4>
+                        <h6 class="card-text">{{ annonce.email }}</h6>
+                        <p class="card-text">{{ annonce.lieu }}</p>
+                        <p class="card-text">{{ annonce.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+
+        setTimeout(() => {
+
+            const alert = document.querySelector('#alert-message');
+            if(alert){
+                document.querySelector("#alert-message").remove();
+            }
+        },2000)
+
+
+    </script>
 {% endblock %}

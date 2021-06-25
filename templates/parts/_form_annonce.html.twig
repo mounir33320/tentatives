@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-12">
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{ form_label(form.lieu) }}
+        {{ form_widget(form.lieu) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+</div>
+<button type="submit" class="btn btn-secondary mt-3">Déposer</button>
+{{ form_end(form)  }}
