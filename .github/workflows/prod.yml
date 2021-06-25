@@ -35,7 +35,7 @@ jobs:
           username: "tentatives"
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           source: "./*"
-          target: "/home/tentatives/dev"
+          target: "/home/tentatives/prod"
 
 #      - name: Install dependencies
 #        run: composer install
@@ -47,5 +47,5 @@ jobs:
           username: tentatives
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          script: php /home/tentatives/dev/bin/console d:s:u --force && php /home/tentatives/dev/bin/console d:f:l --no-interaction
+          script: php /home/tentatives/prod/bin/console d:s:u --force && php /home/tentatives/prod/bin/console d:f:l --no-interaction
 
