@@ -47,9 +47,6 @@ jobs:
         with:
           name: tentative-app
 
-      - name: Install dependencies
-        run: composer install
-
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
@@ -57,7 +54,7 @@ jobs:
           username: "tentatives"
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           source: "./*"
-          target: "/home/tentatives/dev"
+          target: "/home/tentatives/prod"
 
       - name: Update schema database
         uses: appleboy/ssh-action@master
@@ -66,4 +63,4 @@ jobs:
           username: tentatives
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          script: php /home/tentatives/dev/bin/console d:s:u --force
+          script: cd /home/tentatives/prod && composer install && php bin/console d:s:u --force
