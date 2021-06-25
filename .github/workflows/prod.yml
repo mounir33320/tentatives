@@ -28,6 +28,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy
         uses: appleboy/scp-action@master
         with:
