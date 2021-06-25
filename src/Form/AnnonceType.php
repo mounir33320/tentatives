@@ -15,10 +15,10 @@ class AnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Titre', TextType::class)
-            ->add('Email', TextType::class)
-            ->add('Lieu', TextType::class)
-            ->add('Description', TextareaType::class)
+            ->add('titre', TextType::class)
+            ->add('email', TextType::class)
+            ->add('lieu', TextType::class)
+            ->add('description', TextareaType::class)
         ;
     }
 

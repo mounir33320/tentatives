@@ -29,6 +29,9 @@ class HomeController extends AbstractController
             $entityManager->persist($annonce);
             $entityManager->flush();
 
+            $this->addFlash("success", "Annonce déposée avec succès");
+            return $this->redirectToRoute("home");
+
         }
         return $this->render('home/index.html.twig', [
             'annonces' => $annonces,
